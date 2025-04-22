@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>问卷调查</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>问卷调查</h1>
+
+  <div class="question">
+    <p>1. 你最喜欢的编程语言是？</p>
+    <label><input type="radio" name="q1" value="Python"> Python</label>
+    <label><input type="radio" name="q1" value="JavaScript"> JavaScript</label>
+    <label><input type="radio" name="q1" value="Java"> Java</label>
+    <label><input type="radio" name="q1" value="其他"> 其他</label>
+  </div>
+
+  <div class="question">
+    <p>2. 你每天编程多长时间？</p>
+    <input type="text" id="q2" placeholder="例如：3小时" />
+  </div>
+
+  <button onclick="handleSubmit()">提交</button>
+
+  <script>
+    function handleSubmit() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.getElementById('q2').value;
+
+      if (!q1 || q2.trim() === '') {
+        alert('请填写所有问题！');
+        return;
+      }
+
+      const answers = {
+        编程语言: q1.value,
+        编程时间: q2
+      };
+
+      console.log("用户答案：", answers);
+      alert("提交成功！感谢你的参与！");
+    }
+  </script>
+</body>
+</html>
